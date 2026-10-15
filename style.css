@@ -1,0 +1,202 @@
+:root {
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	color: #263238;
+	background: #f4efe7;
+	font-synthesis: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	padding: 64px 20px;
+	background:
+		radial-gradient(circle at 15% 10%, rgba(255, 213, 128, 0.45), transparent 28%),
+		radial-gradient(circle at 90% 90%, rgba(125, 191, 180, 0.35), transparent 30%),
+		#f4efe7;
+}
+
+body::before {
+	position: fixed;
+	z-index: -1;
+	inset: 0;
+	background-image: linear-gradient(rgba(38, 50, 56, 0.035) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(38, 50, 56, 0.035) 1px, transparent 1px);
+	background-size: 32px 32px;
+	content: "";
+}
+
+body > * {
+	width: min(100%, 680px);
+	margin-right: auto;
+	margin-left: auto;
+}
+
+h1 {
+	margin: 0;
+	color: #173f43;
+	font-size: clamp(2.4rem, 7vw, 4.3rem);
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+
+label {
+	display: block;
+	margin-top: 42px;
+	margin-bottom: 10px;
+	color: #597175;
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+#task {
+	width: calc(100% - 126px);
+	min-height: 52px;
+	padding: 0 17px;
+	border: 2px solid #d8d3c9;
+	border-radius: 10px;
+	outline: none;
+	background: rgba(255, 255, 255, 0.78);
+	color: #263238;
+	font: inherit;
+	transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+#task::placeholder {
+	color: #9aa6a3;
+}
+
+#task:focus {
+	border-color: #2f7c78;
+	box-shadow: 0 0 0 4px rgba(47, 124, 120, 0.15);
+}
+
+button {
+	min-height: 52px;
+	border: 0;
+	border-radius: 10px;
+	background: #e27850;
+	color: #fff;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 800;
+	transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+#addTask {
+	width: 116px;
+	margin-left: 6px;
+	box-shadow: 0 5px 0 #b85b3e;
+}
+
+button:hover {
+	background: #cc6240;
+	transform: translateY(-1px);
+}
+
+button:active {
+	box-shadow: none;
+	transform: translateY(3px);
+}
+
+button:focus-visible,
+input[type="checkbox"]:focus-visible {
+	outline: 3px solid rgba(47, 124, 120, 0.45);
+	outline-offset: 3px;
+}
+
+#taskList {
+	display: grid;
+	gap: 12px;
+	margin: 36px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+#taskList:empty::before {
+	padding: 30px 20px;
+	border: 2px dashed #d8d3c9;
+	border-radius: 12px;
+	color: #87928f;
+	content: "Your task list is clear. Add something small to begin.";
+	text-align: center;
+}
+
+#taskList li {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	min-height: 64px;
+	padding: 12px 14px 12px 18px;
+	border: 1px solid rgba(216, 211, 201, 0.8);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.82);
+	box-shadow: 0 8px 24px rgba(42, 53, 52, 0.07);
+	animation: appear 220ms ease-out both;
+	font-size: 1.02rem;
+	line-height: 1.35;
+}
+
+#taskList li::first-letter {
+	color: #173f43;
+}
+
+#taskList li input[type="checkbox"] {
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+	accent-color: #2f7c78;
+	cursor: pointer;
+}
+
+#taskList li button {
+	min-height: 36px;
+	margin-left: auto;
+	padding: 0 12px;
+	background: #edf1ed;
+	color: #597175;
+	font-size: 0.82rem;
+}
+
+#taskList li button:hover {
+	background: #f9d8cb;
+	color: #a94830;
+}
+
+#taskList li.completed {
+	background: rgba(232, 240, 235, 0.78);
+	color: #899592;
+	text-decoration: line-through;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 520px) {
+	body {
+		padding: 42px 16px;
+	}
+
+	#task {
+		width: 100%;
+	}
+
+	#addTask {
+		width: 100%;
+		margin: 12px 0 0;
+	}
+}
